@@ -17,6 +17,7 @@ num_beeba_horde = rand(1..10)
 how_many_blompostomous_are_there=gets.chomp.to_i
 evil_puppy_number=0
 until num_beeba_horde == how_many_blompostomous_are_there
+	break if how_many_blompostomous_are_there > 10 
 	if num_beeba_horde < how_many_blompostomous_are_there
 		system('say -v "Pipe Organ" "too big!"')
 	else 
@@ -26,5 +27,9 @@ until num_beeba_horde == how_many_blompostomous_are_there
 	system("say -v Zarvox '#{evil_puppy_phrase(evil_puppy_number)}'")
 	how_many_blompostomous_are_there=gets.chomp.to_i
 end
-voice="Good"
-system("say -v #{voice} 'You guessed correctly! Your #{num_beeba_horde} kitties and #{final_evil_puppies(evil_puppy_number)} will be delivered to you within the week!'")
+if how_many_blompostomous_are_there > 10
+	system('say -v "Albert" "You have offended the cat lady by guessing a number larger than 10. 50 evil puppies will be sent to you." ')
+else
+	voice="Good"
+	system("say -v #{voice} 'You guessed correctly! Your #{num_beeba_horde} kitties and #{final_evil_puppies(evil_puppy_number)} will be sent to you by the end of the week!'")
+end
